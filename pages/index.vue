@@ -1,110 +1,68 @@
-<template>
-  <div class="container">
-    <div>
-      <input class="campo" id="searchbar" type="text" name="searchbar()" placeholder="Procure uma disciplina" onkeyup="search()">
-    <img src="~/assets/search.jpg" alt="" />
-    
-    </div>
+
+<template class="t">
+  <search-bar></search-bar>
+  <bloco class="p1" :imagemSrc="caminhoDaImagem" :mensagem="mensagemDoPai" :abreviacao="abre" :nivel="niv" />
+
+  <bloco  class="p2" :imagemSrc="caminhoDaImagem2" :mensagem="mensagemDoPai2" :abreviacao="abre2" :nivel="niv2" />
 
 
-    <div class="disciplinas">
-      <div class="disciplina">
-        <img class="ft" src="~/assets/Foto.png" alt="" />
-        <h1 class="nome">Linguagem e Lógica de Programação</h1>
-        <p class="abr">Abreviação: L. L. Prog.</p>
-        <p class="niv">Nível: Técnico Integrado</p>
-        <img class="lapis" src="~/assets/Edit.jpg" alt="" />
-      </div>
+  <bloco class="p3" :imagemSrc="caminhoDaImagem3" :mensagem="mensagemDoPai3" :abreviacao="abre3" :nivel="niv3" />
 
-      <div class="disciplina">
-        <img class="ft" src="~/assets/Foto.png" alt="" />
-        <h1 class="nome">Linguagem e Lógica de Programação</h1>
-        <p class="abr">Abreviação: L. L. Prog.</p>
-        <p class="niv">Nível: Técnico Integrado</p>
-        <img class="lapis" src="~/assets/Edit.jpg" alt="" />
-      </div>
-    </div>
-  </div>
+  <adicionar/>
 </template>
-
-<style>
-.container{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-.campo{
-  border-radius: 14px;
-  border: 1.5px solid #B2D2B7;
-  width: 490px;
-  height: 55.046px;
-}
-.disciplina {
-  border-radius: 8px;
-  border: 1.5px solid #B2D2B7;
-  background: #FFF;
-  width: 487px;
-  height: 239px;
-  flex-shrink: 0;
-  position: absolute;
-  margin-left: 250px;
-}
-.ft{
-  position: relative;
-  display: flex;
-  width: 487px;
-  height: 120px;
-  justify-content: center;
-  align-items: center;
-  flex-shrink: 0;
-  border-radius: 8px 8px 0px 0px;
-}
-.nome{
-  position: relative;
-  font-family: Poppins;
-  font-size: 18.884px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: normal;
-  color: black;
-}
-.abr{
-  position: relative;
-  font-family: Poppins;
-  font-size: 15.107px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: normal;
-  color: #7C9C81;
-}
-.niv{
-  position: relative;
-  font-family: Poppins;
-  font-size: 15.107px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: normal;
-  color: #7C9C81;
-}
-.lapis{
-  position: relative;
-  margin-left: 432px;
-}
-</style>
-
 <script>
-function search(){
-  let input = document.getElementById("searchbar").value;
-  input = input.toLowerCase();
-  let x = document.getElementsByClassName("disciplina");
-  for(i = 0; i < x.length; i++)
-  {
-    if(!x[i].innerHTML.toLowerCase().includes(input)){
-      x[i].computedStyleMap.display = "none";
-    }
-    else{
-      x[i].style.display = "list-item"
-    }
+import bloco from '~/componentes/bloco.vue'
+import adicionar from '~/componentes/adicionar.vue'
+import caminhoDaImagem from '~/assets/Foto.png'
+import SearchBar from "~/componentes/SearchBar.vue"
+export default {
+  components: {
+    bloco,
+    SearchBar,
+    adicionar,
+  },
+  data() {
+    return {
+      caminhoDaImagem: caminhoDaImagem,
+      mensagemDoPai: "Linguagem e Lógica de Programação", // Defina o valor da prop aqui
+      abre: "Abreviação: L. L. Prog",
+      niv: "Nível: Técnico Integrado",
+
+      caminhoDaImagem2: "https://picsum.photos/200/300",
+      mensagemDoPai2: "Matemática", // Defina o valor da prop aqui
+      abre2: "Abreviação: Mat",
+      niv2: "Nível: Técnico Integrado",
+
+      caminhoDaImagem3: "https://picsum.photos/200/300",
+      mensagemDoPai3: "Português", // Defina o valor da prop aqui
+      abre3: "Abreviação: Port",
+      niv3: "Nível: Técnico Integrado",
+    };
   }
 }
 </script>
+
+<style>
+.t{
+  box-sizing: border-box;
+  position: absolute;
+}
+.p1
+{
+  position: absolute;
+  margin-left: 200px;
+  margin-top: 150px;
+}
+.p2{
+  position: absolute;
+  margin-top: 420px;
+  margin-left: 200px;
+}
+.p3{
+  position: absolute;
+  margin-left: 720px;
+  display: block; 
+  margin-top: 150px;
+}
+</style>
+

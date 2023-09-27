@@ -55,6 +55,8 @@ input[type="text"] {
   font-style: normal;
   font-weight: 600;
   line-height: normal;
+  position: absolute;
+  margin-left: 15px;
 }
 .ft{
   position: absolute;
